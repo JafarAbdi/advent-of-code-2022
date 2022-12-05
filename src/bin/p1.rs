@@ -7,7 +7,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         .split("\n\n")
         .map(|e| {
             e.split_whitespace()
-                .map(|calories| calories.parse::<u32>().unwrap())
+                .flat_map(|calories| calories.parse::<u32>())
                 .sum()
         })
         .collect();

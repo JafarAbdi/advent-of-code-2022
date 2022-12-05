@@ -1,6 +1,6 @@
 use itertools::Itertools;
 use std::error::Error;
-use std::fs;
+use std::{env, fs};
 
 fn char_to_priority(c: char) -> u32 {
     if c.is_uppercase() {
@@ -9,7 +9,8 @@ fn char_to_priority(c: char) -> u32 {
     (c as u32) - 96
 }
 fn main() -> Result<(), Box<dyn Error>> {
-    let input = fs::read_to_string("./p3_input.txt")?;
+    let args: Vec<String> = env::args().collect();
+    let input = std::fs::read_to_string(&args[1])?;
     let priorities: u32 = input
         .split('\n')
         .map(|e| {

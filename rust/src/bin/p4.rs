@@ -1,4 +1,4 @@
-use std::{error::Error, fs};
+use std::{error::Error, fs, env};
 
 use itertools::Itertools;
 
@@ -18,7 +18,8 @@ impl Range {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let input = fs::read_to_string("./p4_input.txt")?;
+    let args: Vec<String> = env::args().collect();
+    let input = std::fs::read_to_string(&args[1])?;
     let parsed: Vec<_> = input
         .lines()
         .map(|e| {

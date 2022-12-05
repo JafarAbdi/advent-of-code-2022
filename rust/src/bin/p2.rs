@@ -1,4 +1,4 @@
-use std::{error::Error, str::FromStr};
+use std::{error::Error, str::FromStr, env};
 
 #[derive(Debug, Clone, Copy)]
 enum ShapeScore {
@@ -57,10 +57,8 @@ fn win_shape(opponent_shape: ShapeScore) -> ShapeScore {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let input_strategies = std::fs::read_to_string("./p2_input.txt")?;
-    // let input_strategies = "A Y
-    // B X
-    // C Z";
+    let args: Vec<String> = env::args().collect();
+    let input_strategies = std::fs::read_to_string(&args[1])?;
 
     let strategies: Vec<Vec<_>> = input_strategies
         .split('\n')

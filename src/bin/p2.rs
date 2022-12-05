@@ -1,6 +1,6 @@
 use std::{error::Error, str::FromStr};
 
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 enum ShapeScore {
     Rock = 1,
     Paper,
@@ -59,8 +59,8 @@ fn win_shape(opponent_shape: ShapeScore) -> ShapeScore {
 fn main() -> Result<(), Box<dyn Error>> {
     let input_strategies = std::fs::read_to_string("./p2_input.txt")?;
     // let input_strategies = "A Y
-// B X
-// C Z";
+    // B X
+    // C Z";
 
     let strategies: Vec<Vec<_>> = input_strategies
         .split('\n')

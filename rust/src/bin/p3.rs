@@ -10,7 +10,7 @@ fn char_to_priority(c: char) -> u32 {
 }
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
-    let input = std::fs::read_to_string(&args[1])?;
+    let input = fs::read_to_string(&args[1])?;
     let priorities: u32 = input
         .split('\n')
         .map(|e| {

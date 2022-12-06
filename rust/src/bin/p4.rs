@@ -1,4 +1,4 @@
-use std::{error::Error, fs, env};
+use std::{env, error::Error, fs};
 
 use itertools::Itertools;
 
@@ -19,7 +19,7 @@ impl Range {
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
-    let input = std::fs::read_to_string(&args[1])?;
+    let input = fs::read_to_string(&args[1])?;
     let parsed: Vec<_> = input
         .lines()
         .map(|e| {

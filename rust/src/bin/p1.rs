@@ -1,10 +1,10 @@
 use std::env;
 use std::error::Error;
-use std::fs::read_to_string;
+use std::fs;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().collect();
-    let input = std::fs::read_to_string(&args[1])?;
+    let input = fs::read_to_string(&args[1])?;
     let mut carried_food: Vec<u32> = input
         .split("\n\n")
         .map(|e| {
